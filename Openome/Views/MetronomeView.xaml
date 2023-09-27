@@ -17,14 +17,62 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-        <Label Content="Metronome" />
+        <StackPanel
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Label
+                Content="Openome"
+                FontFamily="Comic Sans MS"
+                FontSize="48"
+                Foreground="LightSeaGreen" />
+        </StackPanel>
 
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center">
+            <Label Content="{Binding BpmValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Background="DarkCyan" Content="BPM" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    Grid.Column="0"
+                    Command="{Binding DecrementBpmCommand}"
+                    Content="-" />
+                <Slider
+                    Grid.Column="1"
+                    Margin="10,0,10,0"
+                    Maximum="500"
+                    Minimum="1"
+                    Value="{Binding BpmValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Button
+                    Grid.Column="2"
+                    Command="{Binding IncrementBpmCommand}"
+                    Content="+" />
+            </Grid>
+        </StackPanel>
         <Button
+            Grid.Row="2"
             Grid.Column="0"
             Command="{Binding StartCommand}"
             Content="Start" />
         <Button
+            Grid.Row="2"
             Grid.Column="1"
             Command="{Binding StopCommand}"
             Content="Stop" />
