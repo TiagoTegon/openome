@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Openome.Views;
+using System.Windows;
 
 namespace Openome
 {
@@ -10,6 +11,7 @@ namespace Openome
         public MainWindow()
         {
             InitializeComponent();
+            MetronomeFrame.Content = new MetronomeView();
         }
     }
 }
